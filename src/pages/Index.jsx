@@ -1,26 +1,22 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { Box, Button, FormControl, FormLabel, Input, VStack, Heading, Text, useToast } from "@chakra-ui/react";
-import { loginUser } from "../api";
 
 const Index = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const toast = useToast();
-  const navigate = useNavigate();
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    try {
-      const data = await loginUser(email, password);
+    // Perform login logic here
+    if (email === "user@example.com" && password === "password") {
       toast({
         title: "Login Successful",
         status: "success",
         duration: 3000,
         isClosable: true,
       });
-      navigate("/dashboard");
-    } catch (error) {
+    } else {
       toast({
         title: "Invalid Credentials",
         status: "error",
